@@ -1,0 +1,1 @@
+import{a as o,d as n}from"./chunk-EJFUX2PQ.js";import{O as r,T as e}from"./chunk-D7KQ5YJH.js";var f=(()=>{class t{constructor(i){this.http=i,this.apiUrl=`${n.apiUrl}/stats`}getMyStats(){return this.http.get(this.apiUrl)}static{this.\u0275fac=function(a){return new(a||t)(e(o))}}static{this.\u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{f as a};
