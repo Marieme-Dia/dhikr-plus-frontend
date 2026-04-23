@@ -111,9 +111,18 @@ export class RegisterComponent {
         setTimeout(() => this.router.navigate(['/login']), 1500);
       },
       error: (err) => {
-        this.errorMsg = err.error || 'Une erreur est survenue.';
-        this.loading = false;
-      }
+  console.error('Erreur complète:', err);
+  if (err.status === 0) {
+    this.errorMsg = '⏳ Le serveur démarre (30 sec). Veuillez réessayer...';
+  } else if (err.status === 400) {
+    this.errorMsg = err.error || 'Données invalides.';
+  } else if (err.status === 409) {
+    this.errorMsg = 'Nom d\'utilisateur ou email déjà utilisé.';
+  } else {
+    this.errorMsg = err.error || 'Erreur serveur. Réessayez.';
+  }
+  this.loading = false;
+}
     });
   }
 }

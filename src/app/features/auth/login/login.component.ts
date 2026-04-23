@@ -107,9 +107,14 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        this.errorMsg = 'Identifiants incorrects. Veuillez réessayer.';
-        this.loading = false;
-      }
+  console.error('Erreur login:', err);
+  if (err.status === 0) {
+    this.errorMsg = '⏳ Le serveur démarre (30 sec). Veuillez réessayer...';
+  } else {
+    this.errorMsg = 'Identifiants incorrects. Veuillez réessayer.';
+  }
+  this.loading = false;
+}
     });
   }
 }
